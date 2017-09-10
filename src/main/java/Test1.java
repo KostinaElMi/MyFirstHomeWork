@@ -25,7 +25,7 @@ public class Test1 {
 
     @BeforeSuite
     public void beforeTests() {
-        File file = new File("C:\\Users\\PC-юшка\\IdeaProjects\\lessons\\src\\main\\resources\\webdrivers\\IEDriverServer.exe");
+        File file = new File("src/main/resources/webdrivers/IEDriverServer.exe");
         System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
         driver = new InternetExplorerDriver();
         wait = new WebDriverWait(driver, 40);
@@ -65,10 +65,10 @@ public class Test1 {
     }
 
     @Test(dependsOnMethods = {"checkNewRegion"})
-    public void scrollToFooder(){
+    public void scrollToFooder() {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true)", driver.findElement(By.xpath("//div[contains(@class,'footer-information')]")));
         driver.findElements(By.xpath("//li[@class='social__item']")).forEach(e ->
-            Assert.assertTrue("Ошибка при проверке видимости веб-элемента ...\n", e.isDisplayed())
+                Assert.assertTrue("Ошибка при проверке видимости веб-элемента ...\n", e.isDisplayed())
         );
 
     }
